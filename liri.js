@@ -63,10 +63,14 @@ var artistName = function(artist) {
 
 var spotifySong = function (searchTerm){ 
 var params = searchTerm;
+if (params === "" || params === undefined) {
+   params = "The Sign";
+}
 spotify.search({ type: 'track', query: params }, function(err, data) {
   if (err) {
     return console.log('Error occurred: ' + err);
   }
+  
   var songs = data.tracks.items;
     // console.log(songs);
     for(let i = 0; i < songs.length; i++){
